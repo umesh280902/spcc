@@ -5,7 +5,13 @@ public class LexicalAnalyzer {
     static Consumer<String> print = (String str) -> { System.out.println(str); };
 
     public static void main(String args[]) {
-        String input = "void main { int a = 20; int b = 30; int c = a + b ; printf( c );}";
+        String input = """
+            void main { 
+            int a = 20; 
+            int b = 30; 
+            int c = a + b ; 
+            printf( c );
+        }""";
         print.accept(input);
         ClassifyLexeme classifyLexeme = new ClassifyLexeme();
         StringBuilder lexemeBuilder = new StringBuilder();

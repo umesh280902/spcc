@@ -8,7 +8,7 @@ public class Follow {
     static Map<String, Set<String>> firsts;
     static Map<String, Set<String>> follow;
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         productions = new HashMap<>();
         productions.put("E", Arrays.asList(Arrays.asList("T", "R")));
         productions.put("R", Arrays.asList(Arrays.asList("+", "T", "R"), Arrays.asList("#")));
@@ -50,15 +50,15 @@ public class Follow {
     }
 
     // Method to compute follow set for a non-terminal symbol
+    // Method to compute follow set for a non-terminal symbol
     static void computeFollowSet(String nonTerminal, Set<String> visited) {
         if (visited.contains(nonTerminal)) {
             return;
         }
         visited.add(nonTerminal);
 
-        for (Map.Entry<String, List<List<String>>> entry : productions.entrySet()) {
-            String key = entry.getKey();
-            List<List<String>> prods = entry.getValue();
+        for (String key : productions.keySet()) {
+            List<List<String>> prods = productions.get(key);
             for (List<String> prod : prods) {
                 int index = prod.indexOf(nonTerminal);
                 if (index != -1) {
@@ -82,4 +82,5 @@ public class Follow {
             }
         }
     }
+
 }
